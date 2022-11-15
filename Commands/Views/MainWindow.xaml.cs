@@ -70,6 +70,8 @@ namespace Commands
 
 
         public RelayCommand ShowCommand { get; set; }
+        public RelayCommand UsernameEnterCommand { get; set; }
+        public RelayCommand PasswordEnterCommand { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -89,9 +91,39 @@ namespace Commands
             });
 
 
+
+
+
+            UsernameEnterCommand = new RelayCommand((e) =>
+            {
+                var myStackPanel = e as StackPanel;
+                var usernameTxtB = myStackPanel.Children[0] as TextBox;
+                if (usernameTxtB.Text.Trim() == String.Empty)
+                {
+                    usernameTxtB.BorderBrush = Brushes.Red;
+                    usernameTxtB.BorderThickness = new Thickness(6);
+                }
+                else
+                {
+                    usernameTxtB.BorderThickness = new Thickness(2);
+                    usernameTxtB.BorderBrush = Brushes.SpringGreen;
+                    var passwordTxtB = myStackPanel.Children[1] as TextBox;
+                    passwordTxtB.Focus();
+                }
+                //var txtB = e as TextBox;
+                //txtB.Focus();
+            });
+
+
+            PasswordEnterCommand = new RelayCommand((e) =>
+            {
+                var btn = e as Button;
+                btn.Focus();
+            });
+
             this.DataContext = this;
 
-      
+
         }
 
     }

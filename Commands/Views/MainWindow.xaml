@@ -15,9 +15,9 @@
         </StackPanel>-->
 
 
-        <StackPanel>
-            <Slider Minimum="10" Maximum="120" Value="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></Slider>
-            <!--<Button Command="{Binding ShowCommand}" Content="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" FontSize="30"  ></Button>-->
+        <StackPanel  x:Name="mystck">
+            <!--<Slider Minimum="10" Maximum="120" Value="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ></Slider>
+            --><!--<Button Command="{Binding ShowCommand}" Content="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="50" FontSize="30"  ></Button>--><!--
             <Button  Height="50" FontSize="30" Content="{Binding Age,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                     
                      >
@@ -30,7 +30,24 @@
                 <TextBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding ShowCommand}" ></KeyBinding>
                 </TextBox.InputBindings>
+            </TextBox>-->
+
+
+            <TextBox Name="usernameTxtb" TabIndex="0"  Height="50" BorderThickness="2" BorderBrush="SpringGreen" Margin="10">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding UsernameEnterCommand}" CommandParameter="{Binding ElementName=mystck}" ></KeyBinding>
+                </TextBox.InputBindings>
             </TextBox>
+
+            <TextBox Name="passwordTxtb" TabIndex="1" Height="50" BorderThickness="2" BorderBrush="SpringGreen" Margin="10">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding PasswordEnterCommand}" CommandParameter="{Binding ElementName=mystck}" ></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <PasswordBox PasswordChar="=" Height="50"></PasswordBox>
+            
+            <Button  Name="submitBtn"  >Submit</Button>
         </StackPanel>
     </Grid>
 </Window>
